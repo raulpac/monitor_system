@@ -5,6 +5,8 @@ find_package(Curses REQUIRED)
 include_directories(${CURSES_INCLUDE_DIRS})
 
 include_directories(include)
+include_directories(/usr/local/Cellar/ncurses/6.2/include)
+
 file(GLOB SOURCES "src/*.cpp")
 
 add_executable(monitor ${SOURCES})

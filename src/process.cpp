@@ -34,7 +34,7 @@ string Process::Command() { return LinuxParser::Command(pid_); }
 string Process::Ram() { 
     
     std::string mem = LinuxParser::Ram(pid_); 
-    float a = std::stof(mem)/1024;
+    float a = std::stoi(mem)/1024;
     int b=a;
     return mem = to_string(b);
 }
@@ -47,4 +47,6 @@ long int Process::UpTime() { return (LinuxParser::UpTime()-LinuxParser::UpTime(p
 
 // TODO: Overload the "less than" comparison operator for Process objects
 // REMOVE: [[maybe_unused]] once you define the function
-bool Process::operator<(Process const& a[[maybe_unused]]) const { return true; }
+bool Process::operator<(Process const& a) const { 
+  return std::stoi(a.ram_) < std::stoi(ram_); 
+}
